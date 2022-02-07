@@ -1,14 +1,17 @@
-# News Sentiment Classification
+# 🤖 News Sentiment Classification
+<br>
+<br>
 
-## sentiment classification
-긍정, 중립, 부정
+### 👉🏻 sentiment : 긍정, 중립, 부정
+<br>
+<br>
 
-
-## model
+## 👉🏻 model
 beomi/kcbert-base based model
+<br>
+<br>
 
-
-## tree
+## 👉🏻 tree
  * [tree-md]
  * [Dockerfile]
  * [src]
