@@ -59,10 +59,10 @@ def main(cfg):
     )
 
     bert_tokenizer.train_from_iterator(data_txt, trainer=trainer)
-    bert_tokenizer.model.save(cfg.PATH.save_dir)
+    bert_tokenizer.model.save(cfg.PATH.tokenizer_dir)
 
-    tokenizer_for_load = BertTokenizerFast.from_pretrained(cfg.PATH.save_dir)  # 로드
-    tokenizer_for_load.save_pretrained(cfg.PATH.save_dir, legacy_format=False)
+    tokenizer_for_load = BertTokenizerFast.from_pretrained(cfg.PATH.tokenizer_dir)  # 로드
+    tokenizer_for_load.save_pretrained(cfg.PATH.tokenizer_dir, legacy_format=False)
 
 
 if __name__ == "__main__":

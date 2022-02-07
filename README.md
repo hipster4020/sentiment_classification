@@ -1,3 +1,21 @@
-# 뉴스 기사 감성 분류
+# News Sentiment Classification
 
-## 긍정, 중립, 부정
+## sentiment classification
+긍정, 중립, 부정
+
+
+## model
+beomi/kcbert-base based model
+
+
+## tree
+ * [tree-md]
+ * [Dockerfile]
+ * [src]
+   * [config.yml]
+   * [dataloader.py]
+   * [test.py]
+   * [tokenizer.py]
+   * [train.py]
+ * [README.md]
+ * [requirements.txt]
