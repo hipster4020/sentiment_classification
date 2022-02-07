@@ -1,5 +1,4 @@
 # 🤖 News Sentiment Classification
-<br>
 
 ### sentiment : 긍정, 중립, 부정
 <br>
