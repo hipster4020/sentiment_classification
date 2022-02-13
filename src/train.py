@@ -27,8 +27,8 @@ def main(cfg):
 
     # dataloder
     train_dataset, eval_dataset = load(tokenizer=tokenizer, **cfg.DATASETS)
-    print(train_dataset[0])
-    print(eval_dataset)
+    #print(train_dataset[0])
+    #print(eval_dataset)
 
     args = TrainingArguments(
         num_train_epochs=cfg.TRAININGS.epochs,
@@ -54,14 +54,17 @@ def main(cfg):
         cfg.MODEL.pretrained_model_name,
         config=pretrained_model_config,
     )
+    #print(pretrained_model_config)
+    #print(model)
 
     trainer = Trainer(
-        model,
-        args,
-        train_dataset,
-        nn.CrossEntropyLoss(weight=torch.tensor([1.0, 2.0, 3.0])),
+        model=model,
+        args=args,
+        train_dataset=train_dataset,
         eval_dataset=eval_dataset,
+        compute_metrics=nn.CrossEntropyLoss(weight=torch.tensor([1.0, 2.0, 3.0])),        
     )
+    trainer.train()
 
 
 if __name__ == "__main__":
