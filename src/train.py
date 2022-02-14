@@ -7,13 +7,9 @@ import pandas as pd
 import torch
 from datasets import load_dataset, logging
 from torch import nn
-from transformers import (
-    AutoTokenizer,
-    BertConfig,
-    BertForSequenceClassification,
-    Trainer,
-    TrainingArguments,
-)
+from transformers import (AutoTokenizer, BertConfig,
+                          BertForSequenceClassification, Trainer,
+                          TrainingArguments)
 
 from dataloader import load
 
@@ -25,11 +21,9 @@ def main(cfg):
     # tokenizer
     tokenizer = AutoTokenizer.from_pretrained(cfg.PATH.tokenizer_dir)
 
-    # dataloder
+    # data loder
     train_dataset, eval_dataset = load(tokenizer=tokenizer, **cfg.DATASETS)
-    #print(train_dataset[0])
-    #print(eval_dataset)
-
+    
     args = TrainingArguments(
         num_train_epochs=cfg.TRAININGS.epochs,
         per_device_train_batch_size=cfg.TRAININGS.train_batch_size,
@@ -54,16 +48,18 @@ def main(cfg):
         cfg.MODEL.pretrained_model_name,
         config=pretrained_model_config,
     )
-    #print(pretrained_model_config)
-    #print(model)
-
+    metrics = nn.CrossEntropyLoss(weight=torch.tensor([1.0, 2.0, 3.0]))
+    
+    print("1")
     trainer = Trainer(
         model=model,
         args=args,
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
-        compute_metrics=nn.CrossEntropyLoss(weight=torch.tensor([1.0, 2.0, 3.0])),        
+        #compute_metrics=nn.CrossEntropyLoss(weight=torch.tensor([1.0, 2.0, 3.0])),
+        compute_metrics=metrics,
     )
+    print("2")
     trainer.train()
 
 

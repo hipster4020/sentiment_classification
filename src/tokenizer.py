@@ -1,14 +1,8 @@
 import json
 
 import hydra
-from tokenizers import (
-    Tokenizer,
-    models,
-    normalizers,
-    pre_tokenizers,
-    processors,
-    trainers,
-)
+from tokenizers import (Tokenizer, models, normalizers, pre_tokenizers,
+                        processors, trainers)
 from tokenizers.normalizers import NFD, Lowercase, StripAccents
 from transformers import BertTokenizerFast
 
@@ -63,6 +57,9 @@ def main(cfg):
 
     tokenizer_for_load = BertTokenizerFast.from_pretrained(cfg.PATH.tokenizer_dir)  # 로드
     tokenizer_for_load.save_pretrained(cfg.PATH.tokenizer_dir, legacy_format=False)
+    
+    # tokenizer_config.json -> config.json
+    # , "model_type": "bert"
 
 
 if __name__ == "__main__":
