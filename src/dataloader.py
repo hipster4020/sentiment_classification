@@ -21,22 +21,15 @@ def load(
     def _tokenize_function(sample):
         tokenized = dict()
 
-        e = tokenizer(
+        tokenized = tokenizer(
             sample["content"],
             max_length=seq_len,
             padding="max_length",
             truncation=True,
             return_tensors="np",
         )
-        tokenized["input_ids"] = e["input_ids"]
-        tokenized["attention_mask"] = e["attention_mask"]
-
-        label = np.zeros((len(sample["label"]), 3))
-
-        # label 0: 긍정, 1: 부정, 2: 중립
-        for i, j in enumerate(sample["label"]):
-            label[np.int(i), np.int(j)] = 1
-
+        
+        label = [int(l) for l in sample['label']]
         tokenized["labels"] = label
 
         return tokenized

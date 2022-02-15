@@ -9,7 +9,7 @@ from datasets import load_dataset, logging
 from torch import nn
 from transformers import (AutoTokenizer, BertConfig,
                           BertForSequenceClassification, Trainer,
-                          TrainingArguments)
+                          TrainingArguments, default_data_collator)
 
 from dataloader import load
 
@@ -48,18 +48,14 @@ def main(cfg):
         cfg.MODEL.pretrained_model_name,
         config=pretrained_model_config,
     )
-    metrics = nn.CrossEntropyLoss(weight=torch.tensor([1.0, 2.0, 3.0]))
     
-    print("1")
     trainer = Trainer(
         model=model,
         args=args,
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
-        #compute_metrics=nn.CrossEntropyLoss(weight=torch.tensor([1.0, 2.0, 3.0])),
-        compute_metrics=metrics,
+        data_collator=default_data_collator,
     )
-    print("2")
     trainer.train()
 
 
