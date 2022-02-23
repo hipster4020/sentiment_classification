@@ -1,17 +1,16 @@
-import json
-from pprint import pprint
-
 import hydra
-import numpy as np
-import pandas as pd
 import torch
 from datasets import load_dataset, logging
-from torch import nn
 from transformers import (AutoTokenizer, BertConfig,
                           BertForSequenceClassification, Trainer,
                           TrainingArguments, default_data_collator)
 
+import wandb
 from dataloader import load
+from metrics import compute_metrics
+
+wandb.init(project="sentiment_classification", entity="sh_park")
+
 
 logging.set_verbosity(logging.ERROR)
 
@@ -37,6 +36,7 @@ def main(cfg):
         logging_steps=cfg.TRAININGS.logging_steps,
         seed=cfg.TRAININGS.seed,
         output_dir=cfg.PATH.output_dir,
+        report_to="wandb"
     )
 
     pretrained_model_config = BertConfig.from_pretrained(
@@ -48,16 +48,15 @@ def main(cfg):
         cfg.MODEL.pretrained_model_name,
         config=pretrained_model_config,
     )
-    
     trainer = Trainer(
         model=model,
         args=args,
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
+        compute_metrics = compute_metrics,
         data_collator=default_data_collator,
     )
     trainer.train()
-
 
 if __name__ == "__main__":
     main()
