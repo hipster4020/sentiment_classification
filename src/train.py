@@ -53,7 +53,7 @@ def main(cfg):
         args=args,
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
-        compute_metrics = compute_metrics,
+        #compute_metrics = compute_metrics,
         data_collator=default_data_collator,
     )
     trainer.train()
