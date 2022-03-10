@@ -1,6 +1,5 @@
 import hydra
-import torch
-from datasets import load_dataset, logging
+from datasets import logging
 from transformers import (AutoTokenizer, BertConfig,
                           BertForSequenceClassification, Trainer,
                           TrainingArguments, default_data_collator)
@@ -48,15 +47,19 @@ def main(cfg):
         cfg.MODEL.pretrained_model_name,
         config=pretrained_model_config,
     )
+
     trainer = Trainer(
         model=model,
         args=args,
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
-        #compute_metrics = compute_metrics,
+        compute_metrics=compute_metrics,
         data_collator=default_data_collator,
     )
     trainer.train()
+    
+    model.save_pretrained(cfg.PATH.save_dir)
+    
 
 if __name__ == "__main__":
     main()
