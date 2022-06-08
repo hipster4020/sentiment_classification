@@ -5,6 +5,7 @@ Electra with Active Learning
 <br>
 
 ### sentiment : 긍정, 중립, 부정
+<br><br>
 ## 👉🏻 설명
 고정된 양의 데이터가 주어지면 semi-supervise 또는 unsupervised learning의 성능은 full-supervised learning에 제한됩니다.<br>
 또한, 주석 비용은 대상 작업에 따라 크게 다릅니다.<br><br><br><br><br>
