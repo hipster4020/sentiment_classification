@@ -26,7 +26,7 @@ label annotation 추가 작업 시에 많은 공수와 비용이 발생하므로
 ## 👉🏻 참고 자료
 
 <blockquote>논문<br>
-https://arxiv.org/abs/1905.03677v1](https://arxiv.org/abs/1905.03677v1<br>
+https://arxiv.org/abs/1905.03677v1<br>
 깃허브<br>
 https://github.com/seominseok0429/Learning-Loss-for-Active-Learning-Pytorch/blob/master/main.py
 </blockquote>
