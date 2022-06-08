@@ -28,11 +28,20 @@ def load(
             truncation=True,
             return_tensors="np",
         )
-        
-        label = [int(l) for l in sample['label']]
+
+        label = [int(l) for l in sample["label"]]
         tokenized["labels"] = label
 
         return tokenized
+
+    print(f"tokenizer : {tokenizer}")
+    print(f"seq_len : {seq_len}")
+    print(f"train_data_path : {train_data_path}")
+    print(f"eval_data_path : {eval_data_path}")
+    print(f"train_test_split : {train_test_split}")
+    print(f"worker : {worker}")
+    print(f"batch_size : {batch_size}")
+    print(f"shuffle_seed : {shuffle_seed}")
 
     train_data_path = abspath(train_data_path)
     is_eval = False
