@@ -1,6 +1,7 @@
 # 🤖 News Sentiment Classification
 ## 👉🏻 model
-Electra with Active Learning
+Electra with Active Learning<br>
+pretrained model "monologg/koelectra-small-v2-discriminator"을 활용해 downstream task로 학습한 모델로 active learning을 구현 및 label annotation 추가 
 <br>
 <br>
 
