@@ -23,6 +23,11 @@ label이 지정되지 않은 pool의 모든 data point는 loss prediction module
 label annotation 추가 작업 시에 많은 공수와 비용이 발생하므로 적절한 Active Learining 사용으로 모델의 효율의 크게 증가할 수 있을 것으로 기대됩니다.<br>
 <br>
 
+## 👉🏻 macro f1score
+<img width="580" alt="1" src="https://user-images.githubusercontent.com/26425581/181575317-f6f71fdc-3c54-44c3-afbc-c262ca07d8f0.png">
+<br>
+<br>
+
 ## 👉🏻 참고 자료
 
 <blockquote>논문<br>
